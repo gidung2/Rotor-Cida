@@ -121,17 +121,17 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 	BLOOM_N = bloom->get_bytes();
 	TOTAL_COUNT = N;
 	targetCounter = i;
+
 	if (coinType == COIN_BTC) {
 		if (searchMode == (int)SEARCH_MODE_MA)
-			printf("\n  Loaded       : %s Bitcoin addresses\n", formatThousands(i).c_str());
+			printf("\r  Loaded       : %s Bitcoin addresses%*s", formatThousands(i).c_str(), 60, "");
 		else if (searchMode == (int)SEARCH_MODE_MX)
-			printf("\n  Loaded       : %s Bitcoin xpoints\n", formatThousands(i).c_str());
+			printf("\r  Loaded       : %s Bitcoin xpoints%*s", formatThousands(i).c_str(), 60, "");
 	}
 	else {
-		printf("\n  Loaded       : %s Ethereum addresses\n", formatThousands(i).c_str());
+		printf("\r  Loaded       : %s Ethereum addresses%*s", formatThousands(i).c_str(), 60, "");
 	}
-
-	printf("\n");
+	fflush(stdout);
 
 	bloom->print();
 	printf("\n");
@@ -1779,31 +1779,23 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (avgGpuKeyRate > 1000000000) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]%*s",
+									printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
-										(unsigned long long)rKeyCount,
+										rKeyCount,
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										avgGpuKeyRate / 1000000000.0,
-										formatThousands(count).c_str(),
-										60, "");
-									fflush(stdout);
-									fflush(stdout);
-									fflush(stdout);
+										formatThousands(count).c_str());
 								}
 								else {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]%*s",
+									printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
-										(unsigned long long)rKeyCount,
+										rKeyCount,
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										avgGpuKeyRate / 1000000.0,
-										formatThousands(count).c_str(),
-										60, "");
-									fflush(stdout);
-									fflush(stdout);
-									fflush(stdout);
+										formatThousands(count).c_str());
 								}
 							}
 						}
@@ -1814,32 +1806,26 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (isAlive(params)) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] %s [F: %d] [C: %lf %%] [GPU: %.2f Gk/s] [T: %s]%*s",
+									printf("\r  [%s] %s [F: %d] [C: %lf %%] [GPU: %.2f Gk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										completedPerc,
 										avgGpuKeyRate / 1000000000.0,
-										formatThousands(count).c_str(),
-										60, "");
-									fflush(stdout);
-									fflush(stdout);
+										formatThousands(count).c_str());
 								}
 							}
 							else {
 
 								if (isAlive(params)) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] %s [F: %d] [C: %lf %%] [GPU: %.2f Mk/s] [T: %s]%*s",
+									printf("\r  [%s] %s [F: %d] [C: %lf %%] [GPU: %.2f Mk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										completedPerc,
 										avgGpuKeyRate / 1000000.0,
-										formatThousands(count).c_str(),
-										60, "");
-									fflush(stdout);
-									fflush(stdout);
+										formatThousands(count).c_str());
 								}
 							}
 						}
@@ -1851,33 +1837,25 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (avgGpuKeyRate > 1000000000) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %llu] %s [F: %d] [CPU %d: %.2f Gk/s] [T: %s]%*s",
+									printf("\r  [%s] [R: %lu] %s [F: %d] [CPU %d: %.2f Gk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
-										(unsigned long long)rKeyCount,
+										rKeyCount,
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										nbit2,
 										avgKeyRate / 1000000000.0,
-										formatThousands(count).c_str(),
-										60, "");
-									fflush(stdout);
-									fflush(stdout);
-									fflush(stdout);
+										formatThousands(count).c_str());
 								}
 								else {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %llu] %s [F: %d] [CPU %d: %.2f Mk/s] [T: %s]%*s",
+									printf("\r  [%s] [R: %lu] %s [F: %d] [CPU %d: %.2f Mk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
-										(unsigned long long)rKeyCount,
+										rKeyCount,
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										nbit2,
 										avgKeyRate / 1000000.0,
-										formatThousands(count).c_str(),
-										60, "");
-									fflush(stdout);
-									fflush(stdout);
-									fflush(stdout);
+										formatThousands(count).c_str());
 								}
 							}
 						}
@@ -1886,33 +1864,27 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 							if (avgGpuKeyRate > 1000000000) {
 								if (isAlive(params)) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] %s [F: %d] [C: %lf %%] [CPU %d: %.2f Gk/s] [T: %s]%*s",
+									printf("\r  [%s] %s [F: %d] [C: %lf %%] [CPU %d: %.2f Gk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										completedPerc,
 										nbit2,
 										avgKeyRate / 1000000000.0,
-										formatThousands(count).c_str(),
-										60, "");
-									fflush(stdout);
-									fflush(stdout);
+										formatThousands(count).c_str());
 								}
 							}
 							else {
 								if (isAlive(params)) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] %s [F: %d] [C: %lf %%] [CPU %d: %.2f Mk/s] [T: %s]%*s",
+									printf("\r  [%s] %s [F: %d] [C: %lf %%] [CPU %d: %.2f Mk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										completedPerc,
 										nbit2,
 										avgKeyRate / 1000000.0,
-										formatThousands(count).c_str(),
-										60, "");
-									fflush(stdout);
-									fflush(stdout);
+										formatThousands(count).c_str());
 								}
 							}
 						}
