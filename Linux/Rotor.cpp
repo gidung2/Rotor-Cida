@@ -1764,11 +1764,11 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 			}
 		}
 		
-		if (years88 > 300) {
+		if (false) {
 
 			if (display > 0) {
 
-				if (years88 > 0) {
+				if (false) {
 
 					if (nbit2 < 1) {
 
@@ -1785,6 +1785,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbFoundKey,
 										avgGpuKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 								else {
 									memset(timeStr, '\0', 256);
@@ -1795,6 +1796,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbFoundKey,
 										avgGpuKeyRate / 1000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 						}
@@ -1812,6 +1814,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										completedPerc,
 										avgGpuKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 							else {
@@ -1825,6 +1828,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										completedPerc,
 										avgGpuKeyRate / 1000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 						}
@@ -1844,6 +1848,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbit2,
 										avgKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 								else {
 									memset(timeStr, '\0', 256);
@@ -1855,6 +1860,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbit2,
 										avgKeyRate / 1000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 						}
@@ -1871,6 +1877,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbit2,
 										avgKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 							else {
@@ -1884,6 +1891,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbit2,
 										avgKeyRate / 1000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 						}
