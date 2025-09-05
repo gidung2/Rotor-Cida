@@ -1779,23 +1779,25 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (avgGpuKeyRate > 1000000000) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]  ",
+									printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]          ",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										avgGpuKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 								else {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]  ",
+									printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]          ",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										avgGpuKeyRate / 1000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 						}
@@ -1806,26 +1808,28 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (isAlive(params)) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] %s [F: %d] [C: %lf %%] [GPU: %.2f Gk/s] [T: %s]  ",
+									printf("\r  [%s] %s [F: %d] [C: %lf %%] [GPU: %.2f Gk/s] [T: %s]          ",
 										toTimeStr(t1, timeStr),
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										completedPerc,
 										avgGpuKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 							else {
 
 								if (isAlive(params)) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] %s [F: %d] [C: %lf %%] [GPU: %.2f Mk/s] [T: %s]  ",
+									printf("\r  [%s] %s [F: %d] [C: %lf %%] [GPU: %.2f Mk/s] [T: %s]          ",
 										toTimeStr(t1, timeStr),
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
 										completedPerc,
 										avgGpuKeyRate / 1000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 						}
@@ -1837,7 +1841,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (avgGpuKeyRate > 1000000000) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %lu] %s [F: %d] [CPU %d: %.2f Gk/s] [T: %s]  ",
+									printf("\r  [%s] [R: %llu] %s [F: %d] [CPU %d: %.2f Gk/s] [T: %s]          ",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
@@ -1845,10 +1849,11 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbit2,
 										avgKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 								else {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %lu] %s [F: %d] [CPU %d: %.2f Mk/s] [T: %s]  ",
+									printf("\r  [%s] [R: %llu] %s [F: %d] [CPU %d: %.2f Mk/s] [T: %s]          ",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
@@ -1856,6 +1861,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbit2,
 										avgKeyRate / 1000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 						}
@@ -1864,7 +1870,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 							if (avgGpuKeyRate > 1000000000) {
 								if (isAlive(params)) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] %s [F: %d] [C: %lf %%] [CPU %d: %.2f Gk/s] [T: %s]  ",
+									printf("\r  [%s] %s [F: %d] [C: %lf %%] [CPU %d: %.2f Gk/s] [T: %s]          ",
 										toTimeStr(t1, timeStr),
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
@@ -1872,12 +1878,13 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbit2,
 										avgKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 							else {
 								if (isAlive(params)) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] %s [F: %d] [C: %lf %%] [CPU %d: %.2f Mk/s] [T: %s]  ",
+									printf("\r  [%s] %s [F: %d] [C: %lf %%] [CPU %d: %.2f Mk/s] [T: %s]          ",
 										toTimeStr(t1, timeStr),
 										rhex.GetBase16().c_str(),
 										nbFoundKey,
@@ -1885,6 +1892,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbit2,
 										avgKeyRate / 1000000.0,
 										formatThousands(count).c_str());
+									fflush(stdout);
 								}
 							}
 						}
