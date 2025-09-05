@@ -123,16 +123,13 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 	targetCounter = i;
 
 	if (coinType == COIN_BTC) {
-		if (searchMode == (int)SEARCH_MODE_MA)
+		if (searchMode == (int)SEARCH_MODE_MA) {
 			printf("\r  Loaded       : %s Bitcoin addresses%*s", formatThousands(i).c_str(), 80, "");
-			fflush(stdout);
-		else if (searchMode == (int)SEARCH_MODE_MX)
+		} else if (searchMode == (int)SEARCH_MODE_MX) {
 			printf("\r  Loaded       : %s Bitcoin xpoints%*s", formatThousands(i).c_str(), 80, "");
-			fflush(stdout);
-	}
-	else {
-	printf("\r  Loaded       : %s Ethereum addresses%*s", formatThousands(i).c_str(), 80, "");
-	fflush(stdout);
+		}
+	} else {
+		printf("\r  Loaded       : %s Ethereum addresses%*s", formatThousands(i).c_str(), 80, "");
 	}
 	fflush(stdout);
 
@@ -180,8 +177,7 @@ Rotor::Rotor(const std::vector<unsigned char>& hashORxpoint, int compMode, int s
 		for (size_t i = 0; i < hashORxpoint.size(); i++) {
 			((uint8_t*)hash160Keccak)[i] = hashORxpoint.at(i);
 		}
-	}
-	else if (this->searchMode == (int)SEARCH_MODE_SX) {
+	} else if (this->searchMode == (int)SEARCH_MODE_SX) {
 		assert(hashORxpoint.size() == 32);
 		for (size_t i = 0; i < hashORxpoint.size(); i++) {
 			((uint8_t*)xpoint)[i] = hashORxpoint.at(i);
