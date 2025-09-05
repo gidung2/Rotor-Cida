@@ -254,9 +254,7 @@ void Rotor::InitGenratorTable()
 		}
 	}
 	if (display == 0) {
-
 		if (rKey == 0) {
-			
 			if (nbit2 > 0) {
 				Int tThreads77;
 				tThreads77.SetInt32(nbit2);
@@ -269,7 +267,8 @@ void Rotor::InitGenratorTable()
 				reh.Add(nextt99);
 				gir.Sub(&reh);
 				if (value777 > 1) {
-					printf("\n  Rotor info   : Continuation... Divide the remaining range %s (%d bit) into CPU %d cores \n", gir.GetBase16().c_str(), gir.GetBitLength(), nbit2);
+					printf("\r  Rotor info   : Continuation... Divide the remaining range %s (%d bit) into CPU %d cores ", gir.GetBase16().c_str(), gir.GetBitLength(), nbit2);
+					fflush(stdout);
 				}
 			}
 		}
@@ -666,7 +665,7 @@ void Rotor::getCPUStartingKey(Int & tRangeStart, Int & tRangeEnd, Int & key, Poi
 		kon.Set(&tRangeStart);
 		kon.Add(&rangeDiffcp);
 		trk = trk + 1;
-		if (display > 0) {
+			if (display >= 0) {
 
 			if (trk == nbit2) {
 				printf("  CPU Core (%d) : %s -> %s \n\n", trk, key.GetBase16().c_str(), rangeEnd.GetBase16().c_str());
