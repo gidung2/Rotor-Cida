@@ -123,18 +123,18 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 	targetCounter = i;
 	if (coinType == COIN_BTC) {
 		if (searchMode == (int)SEARCH_MODE_MA)
-			printf("\n  Loaded       : %s Bitcoin addresses\n", formatThousands(i).c_str());
+			printf("\r  Loaded       : %s Bitcoin addresses", formatThousands(i).c_str()); fflush(stdout);
 		else if (searchMode == (int)SEARCH_MODE_MX)
-			printf("\n  Loaded       : %s Bitcoin xpoints\n", formatThousands(i).c_str());
+			printf("\r  Loaded       : %s Bitcoin xpoints", formatThousands(i).c_str()); fflush(stdout);
 	}
 	else {
-		printf("\n  Loaded       : %s Ethereum addresses\n", formatThousands(i).c_str());
+		printf("\r  Loaded       : %s Ethereum addresses", formatThousands(i).c_str()); fflush(stdout);
 	}
 
-	printf("\n");
+	printf("\r"); fflush(stdout);
 
 	bloom->print();
-	printf("\n");
+	printf("\r"); fflush(stdout);
 
 	InitGenratorTable();
 
@@ -184,7 +184,7 @@ Rotor::Rotor(const std::vector<unsigned char>& hashORxpoint, int compMode, int s
 			((uint8_t*)xpoint)[i] = hashORxpoint.at(i);
 		}
 	}
-	printf("\n");
+	printf("\r"); fflush(stdout);
 
 	InitGenratorTable();
 }
@@ -208,7 +208,7 @@ void Rotor::InitGenratorTable()
 	char* ctimeBuff;
 	time_t now = time(NULL);
 	ctimeBuff = ctime(&now);
-	printf("  Start Time   : %s", ctimeBuff);
+	printf("\r  Start Time   : %s", ctimeBuff); fflush(stdout);
 
 	if (rKey < 1) {
 
@@ -226,7 +226,7 @@ void Rotor::InitGenratorTable()
 				if (i == 3) {
 					string kogda = s777;
 					if (kogda != "") {
-						printf("  Rotor        : Continuing search from BAT file. Checkpoint %s \n\n", kogda.c_str());
+						printf("\r  Rotor        : Continuing search from BAT file. Checkpoint %s ", kogda.c_str()); fflush(stdout);
 					}
 				}
 				if (i == 4) {
@@ -276,9 +276,9 @@ void Rotor::InitGenratorTable()
 	else {
 
 		if (rKey == 0) {
-			printf("  Global start : %s (%d bit)\n", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength());
-			printf("  Global end   : %s (%d bit)\n", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength());
-			printf("  Global range : %s (%d bit)\n", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength());
+			printf("\r  Global start : %s (%d bit)", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength()); fflush(stdout);
+			printf("\r  Global end   : %s (%d bit)", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength()); fflush(stdout);
+			printf("\r  Global range : %s (%d bit)", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength()); fflush(stdout);
 
 			if (nbit2 > 0) {
 				Int tThreads77;
