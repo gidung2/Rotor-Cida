@@ -1804,12 +1804,6 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										avgGpuKeyRate / 1000000.0,
 										formatThousands(count).c_str());
 									fflush(stdout);
-										toTimeStr(t1, timeStr),
-										rKeyCount,
-										rhex.GetBase16().c_str(),
-										nbFoundKey,
-										avgGpuKeyRate / 1000000.0,
-										formatThousands(count).c_str());
 								}
 							}
 						}
@@ -1860,13 +1854,6 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										avgKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
 									fflush(stdout);
-										toTimeStr(t1, timeStr),
-										rKeyCount,
-										rhex.GetBase16().c_str(),
-										nbFoundKey,
-										nbit2,
-										avgKeyRate / 1000000000.0,
-										formatThousands(count).c_str());
 								}
 								else {
 									memset(timeStr, '\0', 256);
@@ -1879,13 +1866,6 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										avgKeyRate / 1000000.0,
 										formatThousands(count).c_str());
 									fflush(stdout);
-										toTimeStr(t1, timeStr),
-										rKeyCount,
-										rhex.GetBase16().c_str(),
-										nbFoundKey,
-										nbit2,
-										avgKeyRate / 1000000.0,
-										formatThousands(count).c_str());
 								}
 							}
 						}
