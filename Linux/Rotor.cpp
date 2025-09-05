@@ -124,12 +124,15 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 
 	if (coinType == COIN_BTC) {
 		if (searchMode == (int)SEARCH_MODE_MA)
-			printf("\r  Loaded       : %s Bitcoin addresses%*s", formatThousands(i).c_str(), 60, "");
+			printf("\r  Loaded       : %s Bitcoin addresses%*s", formatThousands(i).c_str(), 80, "");
+			fflush(stdout);
 		else if (searchMode == (int)SEARCH_MODE_MX)
-			printf("\r  Loaded       : %s Bitcoin xpoints%*s", formatThousands(i).c_str(), 60, "");
+			printf("\r  Loaded       : %s Bitcoin xpoints%*s", formatThousands(i).c_str(), 80, "");
+			fflush(stdout);
 	}
 	else {
-		printf("\r  Loaded       : %s Ethereum addresses%*s", formatThousands(i).c_str(), 60, "");
+	printf("\r  Loaded       : %s Ethereum addresses%*s", formatThousands(i).c_str(), 80, "");
+	fflush(stdout);
 	}
 	fflush(stdout);
 
