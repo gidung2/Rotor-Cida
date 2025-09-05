@@ -1786,8 +1786,6 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbFoundKey,
 										avgGpuKeyRate / 1000000000.0,
 										formatThousands(count).c_str());
-									(void)rhex.GetBase16().c_str();
-									(void)formatThousands(count).c_str();
 									fflush(stdout);
 										toTimeStr(t1, timeStr),
 										rKeyCount,
@@ -1805,8 +1803,6 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 										nbFoundKey,
 										avgGpuKeyRate / 1000000.0,
 										formatThousands(count).c_str());
-									(void)rhex.GetBase16().c_str();
-									(void)formatThousands(count).c_str();
 									fflush(stdout);
 								}
 							}
