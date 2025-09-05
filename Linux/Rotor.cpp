@@ -107,12 +107,13 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 		}
 		i++;
 	}
-	fclose(wfd);
-	free(buf);
-
-	if (should_exit) {
+		if (searchMode == (int)SEARCH_MODE_MA) {
+			printf("\r  Loaded       : %s Bitcoin addresses", formatThousands(i).c_str()); fflush(stdout);
+		} else if (searchMode == (int)SEARCH_MODE_MX) {
+			printf("\r  Loaded       : %s Bitcoin xpoints", formatThousands(i).c_str()); fflush(stdout);
+		}
 		delete secp;
-		delete bloom;
+		printf("\r  Loaded       : %s Ethereum addresses", formatThousands(i).c_str()); fflush(stdout);
 		if (DATA)
 			free(DATA);
 		exit(0);
