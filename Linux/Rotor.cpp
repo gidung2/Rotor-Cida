@@ -107,13 +107,12 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 		}
 		i++;
 	}
-		if (searchMode == (int)SEARCH_MODE_MA) {
-			printf("\r  Loaded       : %s Bitcoin addresses", formatThousands(i).c_str()); fflush(stdout);
-		} else if (searchMode == (int)SEARCH_MODE_MX) {
-			printf("\r  Loaded       : %s Bitcoin xpoints", formatThousands(i).c_str()); fflush(stdout);
-		}
+	fclose(wfd);
+	free(buf);
+
+	if (should_exit) {
 		delete secp;
-		printf("\r  Loaded       : %s Ethereum addresses", formatThousands(i).c_str()); fflush(stdout);
+		delete bloom;
 		if (DATA)
 			free(DATA);
 		exit(0);
@@ -124,18 +123,18 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 	targetCounter = i;
 	if (coinType == COIN_BTC) {
 		if (searchMode == (int)SEARCH_MODE_MA)
-			printf("\r  Loaded       : %s Bitcoin addresses", formatThousands(i).c_str()); fflush(stdout);
+			printf("\n  Loaded       : %s Bitcoin addresses\n", formatThousands(i).c_str());
 		else if (searchMode == (int)SEARCH_MODE_MX)
-			printf("\r  Loaded       : %s Bitcoin xpoints", formatThousands(i).c_str()); fflush(stdout);
+			printf("\n  Loaded       : %s Bitcoin xpoints\n", formatThousands(i).c_str());
 	}
 	else {
-		printf("\r  Loaded       : %s Ethereum addresses", formatThousands(i).c_str()); fflush(stdout);
+		printf("\n  Loaded       : %s Ethereum addresses\n", formatThousands(i).c_str());
 	}
 
-	printf("\r"); fflush(stdout);
+	printf("\n");
 
 	bloom->print();
-	printf("\r"); fflush(stdout);
+	printf("\n");
 
 	InitGenratorTable();
 
@@ -185,7 +184,7 @@ Rotor::Rotor(const std::vector<unsigned char>& hashORxpoint, int compMode, int s
 			((uint8_t*)xpoint)[i] = hashORxpoint.at(i);
 		}
 	}
-	printf("\r"); fflush(stdout);
+	printf("\n");
 
 	InitGenratorTable();
 }
@@ -209,7 +208,7 @@ void Rotor::InitGenratorTable()
 	char* ctimeBuff;
 	time_t now = time(NULL);
 	ctimeBuff = ctime(&now);
-	printf("\r  Start Time   : %s", ctimeBuff); fflush(stdout);
+	printf("  Start Time   : %s", ctimeBuff);
 
 	if (rKey < 1) {
 
@@ -227,7 +226,7 @@ void Rotor::InitGenratorTable()
 				if (i == 3) {
 					string kogda = s777;
 					if (kogda != "") {
-						printf("\r  Rotor        : Continuing search from BAT file. Checkpoint %s ", kogda.c_str()); fflush(stdout);
+						printf("  Rotor        : Continuing search from BAT file. Checkpoint %s \n\n", kogda.c_str());
 					}
 				}
 				if (i == 4) {
@@ -255,7 +254,9 @@ void Rotor::InitGenratorTable()
 		}
 	}
 	if (display == 0) {
+
 		if (rKey == 0) {
+			
 			if (nbit2 > 0) {
 				Int tThreads77;
 				tThreads77.SetInt32(nbit2);
@@ -268,8 +269,7 @@ void Rotor::InitGenratorTable()
 				reh.Add(nextt99);
 				gir.Sub(&reh);
 				if (value777 > 1) {
-					printf("\r  Rotor info   : Continuation... Divide the remaining range %s (%d bit) into CPU %d cores ", gir.GetBase16().c_str(), gir.GetBitLength(), nbit2);
-					fflush(stdout);
+					printf("\n  Rotor info   : Continuation... Divide the remaining range %s (%d bit) into CPU %d cores \n", gir.GetBase16().c_str(), gir.GetBitLength(), nbit2);
 				}
 			}
 		}
@@ -277,9 +277,9 @@ void Rotor::InitGenratorTable()
 	else {
 
 		if (rKey == 0) {
-			printf("\r  Global start : %s (%d bit)", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength()); fflush(stdout);
-			printf("\r  Global end   : %s (%d bit)", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength()); fflush(stdout);
-			printf("\r  Global range : %s (%d bit)", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength()); fflush(stdout);
+			printf("  Global start : %s (%d bit)\n", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength());
+			printf("  Global end   : %s (%d bit)\n", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength());
+			printf("  Global range : %s (%d bit)\n", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength());
 
 			if (nbit2 > 0) {
 				Int tThreads77;
@@ -666,7 +666,7 @@ void Rotor::getCPUStartingKey(Int & tRangeStart, Int & tRangeEnd, Int & key, Poi
 		kon.Set(&tRangeStart);
 		kon.Add(&rangeDiffcp);
 		trk = trk + 1;
-			if (display >= 0) {
+		if (display > 0) {
 
 			if (trk == nbit2) {
 				printf("  CPU Core (%d) : %s -> %s \n\n", trk, key.GetBase16().c_str(), rangeEnd.GetBase16().c_str());
@@ -1767,7 +1767,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 		
 		if (years88 > 300) {
 
-			if (display > 0) {
+			if (display == 0) {
 
 				if (years88 > 0) {
 
