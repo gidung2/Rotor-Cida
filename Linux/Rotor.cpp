@@ -1779,7 +1779,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (avgGpuKeyRate > 1000000000) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]  ",
+									printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
@@ -1789,7 +1789,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 								}
 								else {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]  ",
+									printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
@@ -1837,7 +1837,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (avgGpuKeyRate > 1000000000) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %llu] %s [F: %d] [CPU %d: %.2f Gk/s] [T: %s]  ",
+									printf("\r  [%s] [R: %lu] %s [F: %d] [CPU %d: %.2f Gk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
@@ -1848,7 +1848,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 								}
 								else {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %llu] %s [F: %d] [CPU %d: %.2f Mk/s] [T: %s]  ",
+									printf("\r  [%s] [R: %lu] %s [F: %d] [CPU %d: %.2f Mk/s] [T: %s]  ",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
@@ -1902,7 +1902,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 									if (avgGpuKeyRate > 1000000000) {
 										memset(timeStr, '\0', 256);
-										printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]  ",
+										printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]  ",
 											toTimeStr(t1, timeStr),
 											rKeyCount,
 											rhex.GetBase16().c_str(),
@@ -1912,13 +1912,13 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 									}
 									else {
 										memset(timeStr, '\0', 256);
-										printf("\r  [%s] [R: %llu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]  ",
+										printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]  ",
 											toTimeStr(t1, timeStr),
-											rKeyCount,
-											rhex.GetBase16().c_str(),
-											nbFoundKey,
-											avgGpuKeyRate / 1000000.0,
-											formatThousands(count).c_str());
+										 rKeyCount,
+										 rhex.GetBase16().c_str(),
+										 nbFoundKey,
+										 avgGpuKeyRate / 1000000.0,
+										 formatThousands(count).c_str());
 									}
 								}
 							}
@@ -1951,7 +1951,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 											formatThousands(count).c_str());
 									}
 								}
-							}
+													}
 						}
 					}
 				}
@@ -2069,9 +2069,9 @@ bool Rotor::MatchXPoint(uint32_t * _h)
 
 std::string Rotor::formatThousands(uint64_t x)
 {
-	char buf[32] = "";
+    char buf[32] = "";
 
-	sprintf(buf, "%llu", x);
+	sprintf(buf, "%lu", x);
 
 	std::string s(buf);
 
