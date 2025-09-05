@@ -123,13 +123,13 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 	targetCounter = i;
 
 	if (coinType == COIN_BTC) {
-		if (searchMode == (int)SEARCH_MODE_MA) {
-			printf("\r  Loaded       : %s Bitcoin addresses%*s", formatThousands(i).c_str(), 80, "");
-		} else if (searchMode == (int)SEARCH_MODE_MX) {
-			printf("\r  Loaded       : %s Bitcoin xpoints%*s", formatThousands(i).c_str(), 80, "");
-		}
-	} else {
-		printf("\r  Loaded       : %s Ethereum addresses%*s", formatThousands(i).c_str(), 80, "");
+		if (searchMode == (int)SEARCH_MODE_MA)
+			printf("\n  Loaded       : %s Bitcoin addresses\n", formatThousands(i).c_str());
+		else if (searchMode == (int)SEARCH_MODE_MX)
+			printf("\n  Loaded       : %s Bitcoin xpoints\n", formatThousands(i).c_str());
+	}
+	else {
+		printf("\n  Loaded       : %s Ethereum addresses\n", formatThousands(i).c_str());
 	}
 	fflush(stdout);
 
@@ -1764,11 +1764,11 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 			}
 		}
 		
-		if (false) {
+		if (years88 > 300) {
 
 			if (display > 0) {
 
-				if (false) {
+				if (years88 > 0) {
 
 					if (nbit2 < 1) {
 
@@ -1778,7 +1778,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 								if (avgGpuKeyRate > 1000000000) {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]  ",
+									printf("  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s] \r",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
@@ -1789,7 +1789,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 								}
 								else {
 									memset(timeStr, '\0', 256);
-									printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]  ",
+									printf("  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s] \r",
 										toTimeStr(t1, timeStr),
 										rKeyCount,
 										rhex.GetBase16().c_str(),
@@ -1909,7 +1909,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 
 									if (avgGpuKeyRate > 1000000000) {
 										memset(timeStr, '\0', 256);
-										printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s]  ",
+										printf("  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Gk/s] [T: %s] \r",
 											toTimeStr(t1, timeStr),
 											rKeyCount,
 											rhex.GetBase16().c_str(),
@@ -1919,7 +1919,7 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 									}
 									else {
 										memset(timeStr, '\0', 256);
-										printf("\r  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s]  ",
+										printf("  [%s] [R: %lu] %s [F: %d] [GPU: %.2f Mk/s] [T: %s] \r",
 											toTimeStr(t1, timeStr),
 										 rKeyCount,
 										 rhex.GetBase16().c_str(),
